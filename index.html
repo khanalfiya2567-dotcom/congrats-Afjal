@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Congratulations Afjal 💖</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Comic Sans MS", cursive;
+        background: linear-gradient(to bottom right, #ffd6e8, #fff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card {
+        background: white;
+        width: 90%;
+        max-width: 400px;
+        padding: 30px;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 2;
+    }
+
+    h1, p {
+        color: #d63384;
+        margin: 10px 0;
+    }
+
+    img {
+        width: 250px;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+
+    button {
+        margin-top: 25px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background: #ff69b4;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #ff1493;
+    }
+
+    /* Heart floating effect */
+    .heart {
+        position: absolute;
+        font-size: 24px;
+        color: #ff69b4;
+        animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+        0% {transform: translateY(0) scale(1);}
+        50% {transform: translateY(-150px) scale(1.2);}
+        100% {transform: translateY(-300px) scale(0);}
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="content">
+    <h1>🎉 Congratulations Afjal 🎉</h1>
+    <p>You did it! And I’m sooo proud of you 💖</p>
+    <button onclick="nextPage()">Next 💕</button>
+</div>
+
+<script>
+let page = 0;
+
+// Heart floating effect
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.fontSize = (10 + Math.random() * 30) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+}
+setInterval(createHeart, 500);
+
+function nextPage() {
+    const content = document.getElementById("content");
+    page++;
+
+    if (page === 1) {
+        content.innerHTML = `
+            <h1>💼 New Job, New Glow ✨</h1>
+            <p>This job suits you perfectly… But honestly? You were already attractive 😌💗</p>
+            <button onclick="nextPage()">Next 💕</button>
+        `;
+    }
+
+    else if (page === 2) {
+        content.innerHTML = `
+            <h1>🐰 Cute Alert 🐰</h1>
+            <img src="bunny1.png" alt="Cute Bunny">
+            <p>This bunny is celebrating you… But my heart is celebrating harder 💓</p>
+            <button onclick="nextPage()">Next 💕</button>
+        `;
+    }
+
+    else if (page === 3) {
+        content.innerHTML = `
+            <h1>😉 Just Saying…</h1>
+            <p>Now that you’re officially successful, I might need to congratulate you in person 😳💞</p>
+            <button onclick="nextPage()">Next 💕</button>
+        `;
+    }
+
+    else if (page === 4) {
+        content.innerHTML = `
+            <h1>💌 Final Confession 💌</h1>
+            <p>I’m really proud of you, Afjal 💖 And maybe… I like you more than I should 😌</p>
+            <div style="margin-top:20px;">
+                <button onclick="confess(true)">Yes 💖</button>
+                <button onclick="confess(false)">No 😢</button>
+            </div>
+        `;
+    }
+}
+
+// Final confession result
+function confess(answer) {
+    const content = document.getElementById("content");
+    if(answer){
+        content.innerHTML = `<h1>💞 YAY! 💞</h1><p>I’m so happy you feel the same! 😍💖</p>`;
+    } else {
+        content.innerHTML = `<h1>😢 Oh…</h1><p>No worries… I still think you’re amazing! 💗</p>`;
+    }
+}
+</script>
+
+</body>
+</html>
